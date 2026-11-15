@@ -332,7 +332,7 @@
 .case-study-design .cs-cover img {
   object-fit: cover;
   object-position: top;
-  border: 1px solid var(--border);
+  border: 0;
   background: var(--surface);
   border-radius: 0 0 8px 8px;
   width: 100%;
@@ -567,7 +567,7 @@
   line-height: 1.6;
 }
 .case-study-design .cs-figure img {
-  border: 1px solid var(--border);
+  border: 0;
   background: var(--surface);
   border-radius: 6px;
   width: 100%;
@@ -1019,6 +1019,26 @@
   border: 0;
   border-radius: 6px;
 }
+/* Soft lift on screenshots (images only; videos and the cover stay flat). */
+.case-study-design .cs-figure > div:has(> img) {
+  box-shadow:
+    0 1px 2px rgb(16 24 40 / 0.06),
+    0 12px 32px -8px rgb(16 24 40 / 0.18);
+}
+.case-study-design .cs-cover .cs-figure > div,
+.case-study-design .jia-rewards-preview .cs-figure > div {
+  box-shadow: none;
+}
+/* Screenshots with their own rounded app-window corners: clip the frame to
+   those corners so no background colour shows outside them. */
+.case-study-design .cs-image-app-window .cs-figure > div {
+  border-radius: 1.6% / 2.2%;
+  background: transparent;
+}
+.case-study-design .cs-image-app-window .cs-figure img {
+  border-radius: 0;
+  background: transparent;
+}
 .case-study-design .cs-contribution .cs-scope {
   margin: 0;
 }
@@ -1194,6 +1214,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-start;
   gap: 20px clamp(24px, 4vw, 56px);
   margin: 0;
   padding: 0;
@@ -1210,8 +1231,8 @@
 }
 @media (max-width: 480px) {
   .case-study-design .cs-tools-grid {
-    justify-content: space-between;
-    gap: 16px 0;
+    justify-content: flex-start;
+    gap: 16px 20px;
   }
   .case-study-design .cs-tools-grid img {
     height: 28px;

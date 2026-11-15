@@ -283,6 +283,7 @@ export function CaseStudyContent({
         )}
         <CaseStudyHeader
           title={study.name}
+          showLabel={study.slug !== "attest"}
           category={study.category ?? study.subtitle}
           subtitle={study.title ?? study.subtitle}
           lede={study.lede}

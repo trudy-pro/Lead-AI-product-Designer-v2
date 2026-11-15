@@ -418,7 +418,7 @@ function Index() {
                       </div>
                       <div className="case-preview">
                         <img
-                          src="/portfolio/jia-preview-2.jpg?v=1"
+                          src="/portfolio/jia-preview-5.jpg?v=1"
                           alt=""
                           loading="lazy"
                           width="240"
@@ -623,7 +623,7 @@ function Index() {
                 height="555"
               />
               <div className="about-body">
-                <p className="eyebrow">[ where I have worked ]</p>
+                <p className="eyebrow">[ WHERE I HAVE WORKED ]</p>
                 <ul className="work-history">
                   <li>
                     <p>
@@ -681,7 +681,7 @@ function Index() {
               </div>
             </div>
             <div className="about-me">
-              <p className="eyebrow">[ today ]</p>
+              <p className="eyebrow">[ TODAY ]</p>
               <p>
                 I'm currently a Design Researcher at FHNW (HGK) in Basel and am seeking
                 opportunities in design, frontend engineering, and design systems.

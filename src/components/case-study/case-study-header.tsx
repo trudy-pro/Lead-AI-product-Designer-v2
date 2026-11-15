@@ -7,17 +7,20 @@ export function CaseStudyHeader({
   category,
   subtitle,
   lede,
+  showLabel = true,
   children,
 }: {
   title: string;
   category: string;
   subtitle: string;
   lede?: string | undefined;
+  /** Hide the "[ CASE STUDY 0X ]" label above the category. */
+  showLabel?: boolean;
   children: ReactNode;
 }) {
   return (
     <section id="cs-intro" className="cs-hero">
-      {title === "FadäRhy" ? (
+      {!showLabel ? null : title === "FadäRhy" ? (
         <h2 className="cs-section-label">[ COMPANY BACKGROUND ]</h2>
       ) : (
         <h2 className="cs-section-label">[ CASE STUDY {caseStudyNumber(title)} ]</h2>

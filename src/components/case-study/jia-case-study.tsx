@@ -38,8 +38,10 @@ export function JiaCaseStudyContent({
         />
         <CaseStudyHeader
           title="Jia"
+          showLabel={false}
           category="Loan App — UI/UX case study"
-          subtitle="Loan App — UI/UX case study"
+          subtitle="Designing a mobile and web financial experience"
+          lede="Jia set out to reward good borrowing: small-business owners who repay on time earn Jia tokens that unlock lower fees and higher limits. I participated in the complete UX process and was responsible for the initial mobile application designs."
         >
           <Reveal>
             <dl className="project-details cs-facts cs-facts-row">
@@ -84,23 +86,28 @@ export function JiaCaseStudyContent({
         label="Company background"
         title="Designing Jia's Digital Lending Experience from the Ground Up"
       >
-        <CaseStudyImage
-          src="/images/jia/lending-dashboard-v2.webp"
-          alt="Jia business lending dashboard showing onboarding progress, loan terms, repayment balance and rewards"
-        />
         <Prose>
           <p>
-            Jia is a fintech company founded in 2022 to make financing more accessible to small
-            businesses in emerging markets.
+            Founded in 2022,{" "}
+            <strong>
+              Jia is a fintech company focused on making financing more accessible to small
+              businesses in emerging markets.
+            </strong>{" "}
+            In 2023, the company raised <strong>$4.3 million in seed funding</strong>, alongside an
+            additional <strong>$1 million in on-chain liquidity</strong>, to support its growth and
+            expansion.
           </p>
+        </Prose>
+        <CaseStudyImage
+          className="cs-image-app-window"
+          src="/images/jia/lending-dashboard-v3.jpg"
+          alt="Jia business lending dashboard showing payment schedule progress, loan terms, projected outstanding balance and Jia rewards points"
+        />
+        <Prose>
           <p>
             I helped design Jia's digital product from the ground up, leading UX research, defining
             user flows and information architecture, and designing interfaces to simplify onboarding
             and make financial services easier to navigate.
-          </p>
-          <p>
-            In May 2023, Jia raised $4.3 million in seed funding, alongside a $1 million on-chain
-            liquidity commitment, to support its expansion.
           </p>
         </Prose>
       </EditorialContentSection>
@@ -126,7 +133,7 @@ export function JiaCaseStudyContent({
           <p>
             I designed Jia, a loan app that treats good borrowers like owners. Repaying on time,
             referring friends and acting as a guarantor earn Jia tokens. The tokens unlock what
-            business owners told me they needed to grow: lower interest, higher loan limits, a 7-day
+            business owners told me they needed to grow: lower interest, higher loan limits, a seven-day
             grace period and access to cheaper suppliers.
           </p>
         </Prose>
@@ -139,7 +146,8 @@ export function JiaCaseStudyContent({
         title="Reducing friction in business onboarding"
       >
         <CaseStudyImage
-          src="/images/jia/business-onboarding.png"
+          className="cs-image-app-window"
+          src="/images/jia/business-onboarding-v2.jpg"
           alt="Jia onboarding screen for choosing credit amount, payment term and rewards benefits, with a payment summary"
         />
         <Prose>

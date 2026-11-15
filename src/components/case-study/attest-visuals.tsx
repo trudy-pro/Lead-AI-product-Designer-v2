@@ -67,7 +67,7 @@ function AttestStates() {
           <article key={status} className="min-w-0 rounded-xl border border-border bg-card p-5">
             <h3 className="mb-4 text-[12px] text-muted-foreground">{label}</h3>
             <VerificationStatus status={status} className="max-w-full whitespace-normal" />
-            <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground">{text}</p>
+            <p className="cs-reading mt-4 text-[19px] leading-[1.6] text-muted-foreground">{text}</p>
           </article>
         ))}
       </div>
@@ -176,12 +176,12 @@ export function AttestEvaluationPlan() {
             <Icon className="mt-1 shrink-0" size={24} strokeWidth={1.6} aria-hidden="true" />
             <div className="border-l border-border pl-4">
               <h4 className="text-[17px] font-semibold leading-tight">{title}</h4>
-              <p className="mt-2 text-[15px] leading-[1.6] text-muted-foreground">{text}</p>
+              <p className="cs-reading mt-2 text-[19px] leading-[1.6] text-muted-foreground">{text}</p>
             </div>
           </article>
         ))}
       </div>
-      <p className="mt-6 text-[13px] italic text-muted-foreground">
+      <p className="cs-reading mt-6 text-[19px] italic text-muted-foreground">
         Proposed evaluation framework · Usability and security testing have not yet been conducted.
       </p>
     </Reveal>

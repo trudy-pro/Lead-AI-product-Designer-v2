@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, type ReactNode, type RefObject } from "react";
 import { createPortal } from "react-dom";
-import { Link, type LinkProps } from "@tanstack/react-router";
+import type { LinkProps } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import type { CaseSection } from "@/components/case-study/case-study";
+import { CaseStudySidebarHeader, type CaseSection } from "@/components/case-study/case-study";
 
 export interface ProjectOverlayProps {
   trigger: ReactNode;
@@ -11,7 +11,7 @@ export interface ProjectOverlayProps {
   /** Optional icon; falls back to the first letter of the title. */
   iconSrc?: string;
   sections: CaseSection[];
-  /** Optional link shown at the bottom of the sidebar (e.g. the full case study page). */
+  /** Optional full-page link on the sidebar title. */
   fullPageHref?: LinkProps["to"];
   children: ReactNode;
 }
@@ -231,7 +231,7 @@ function ProjectOverlayPanel({
         }
       }}
     >
-      <div className="project-overlay-panel">
+      <div className="project-overlay-panel case-study-design">
         <Button
           ref={closeRef}
           variant="ghost"
@@ -245,24 +245,20 @@ function ProjectOverlayPanel({
         </Button>
 
         <aside className="project-overlay-sidebar">
-          <div className="project-overlay-identity">
-            <ProjectIcon iconSrc={iconSrc} title={title} className="project-overlay-project-icon" />
-            <div>
-              <p className="project-overlay-project-name">{title}</p>
-              <p className="project-overlay-project-subtitle">{subtitle}</p>
-            </div>
+          <div className="cs-sidebar">
+            <CaseStudySidebarHeader
+              title={title}
+              subtitle={subtitle}
+              onBack={close}
+              fullPageHref={fullPageHref}
+            />
+            <nav aria-label="Case study sections" className="cs-sidebar-nav">
+              {nav}
+            </nav>
           </div>
-          <nav aria-label="Case study sections" className="project-overlay-section-nav">
-            {nav}
-          </nav>
-          {fullPageHref && (
-            <Link to={fullPageHref} className="project-overlay-footer">
-              {title} case study ↗
-            </Link>
-          )}
         </aside>
 
-        <div ref={scrollRef} className="project-overlay-scroll">
+        <div ref={scrollRef} className="project-overlay-scroll cs-content">
           <div className="project-overlay-mobilebar">
             <div className="flex min-w-0 items-center gap-2.5">
               <ProjectIcon iconSrc={iconSrc} title={title} className="h-7 w-7 rounded-md" />

@@ -33,6 +33,7 @@ export interface CaseStudySectionData {
   id: string;
   label: string;
   title: string;
+  layout?: "showcase";
   blocks: CaseStudyBlock[];
 }
 
@@ -41,6 +42,7 @@ export interface CaseStudy {
   name: string;
   /** Short sidebar/overlay subtitle, e.g. "Client Redesign & UI Kit". */
   subtitle: string;
+  category?: string;
   title?: string;
   lede?: string;
   liveUrl?: string;
@@ -48,12 +50,36 @@ export interface CaseStudy {
   facts: CaseStudyFact[];
   /** Optional chip-style header details (as on the Jia case study); replaces `facts` in the header when set. */
   details?: { label: string; values: string[]; span?: 1 | 2 | 3 }[];
-  contribution?: { mine: string[]; notMine: string[] };
+  contribution?: {
+    summary?: string;
+    role?: string;
+    context?: string;
+    mine: string[];
+    notMine: string[];
+  };
+  /** Optional "[ TOOLS ]" icon grid shown under the contribution block. */
+  tools?: { name: string; icon: string }[];
   sections: CaseStudySectionData[];
 }
 
+/** AI tools shown in the "[ TOOLS ]" row of the FadäRhy and Donot Fraud AI case studies. */
+const aiTools: CaseStudy["tools"] = [
+  { name: "Notion", icon: "/portfolio/tools/notion.webp" },
+  { name: "Storybook", icon: "/portfolio/tools/storybook.webp" },
+  { name: "Claude", icon: "/portfolio/tools/claude.webp" },
+  { name: "Codex", icon: "/portfolio/tools/codex.webp" },
+  { name: "Lovable", icon: "/portfolio/tools/lovable.webp" },
+  { name: "Figma", icon: "/portfolio/tools/figma.webp" },
+  { name: "Apertus", icon: "/portfolio/tools/apertus.webp" },
+  { name: "Gemini", icon: "/portfolio/tools/gemini.webp" },
+];
+
 export function caseSections(study: CaseStudy): CaseSection[] {
-  return study.sections.map(({ id, label }) => ({ id, label }));
+  return [
+    { id: "cs-intro", label: "Intro" },
+    ...(study.contribution ? [{ id: "cs-contribution", label: "Contribution" }] : []),
+    ...study.sections.map(({ id, label }) => ({ id, label })),
+  ];
 }
 
 export const dwellinn: CaseStudy = {
@@ -216,6 +242,9 @@ export const fadarhy: CaseStudy = {
   slug: "fadarhy",
   name: "FadäRhy",
   subtitle: "Founding Design & Engineering",
+  category: "Design Engineering / AI-Assisted Frontend / Founding Design",
+  title: "Designing for consistency and building AI-ready Design System",
+  lede: "FadäRhy turns a few sentences about your team into matched labs, investors, partners and experts across the Basel life-sciences ecosystem each with a reason, a source and a 12-month plan. It started at Hack am Rhein, where our five-person team won.",
   showcase: {
     src: "/videos/fadarhy-showcase.mp4",
     poster: "/videos/fadarhy-showcase-poster.jpg",
@@ -241,11 +270,36 @@ export const fadarhy: CaseStudy = {
     { label: "Outcome", value: "Hackathon winner · live product" },
     { label: "Live", value: "app.fadarhy.ch" },
   ],
+  contribution: {
+    summary:
+      "I set the product's interface direction and turned the team's scattered UI variations into one design system that designers, developers and AI coding assistants all build from.",
+    mine: [],
+    notMine: [],
+  },
+  tools: aiTools,
   sections: [
     {
+      id: "problem",
+      label: "Problem",
+      title: "FadäRhy: One Design System,",
+      blocks: [
+        {
+          type: "text",
+          paragraphs: [
+            {
+              text: "At the beginning of FadäRhy, each teammate built screens independently, resulting in inconsistent colors, buttons, and interactions. AI coding assistants added another challenge by generating new styles and components without following existing design patterns. The faster we built, the more fragmented the product became, increasing inconsistencies and maintenance effort. I created an AI-ready design system as a single source of truth, enabling both teammates and AI assistants to build consistent, reusable interfaces.",
+              strong:
+                "I created an AI-ready design system as a single source of truth, enabling both teammates and AI assistants to build consistent, reusable interfaces.",
+            },
+          ],
+        },
+      ],
+    },
+    {
       id: "background",
-      label: "Company background",
-      title: "Designing and building Basel life-sciences ecosystem navigator.",
+      label: "How it works",
+      title: "",
+      layout: "showcase",
       blocks: [
         {
           type: "video",
@@ -253,30 +307,33 @@ export const fadarhy: CaseStudy = {
           poster: "/videos/fadarhy-loop-poster.jpg",
           label: "FadäRhy product loop",
         },
-        {
-          type: "text",
-          paragraphs: [
-            "FadäRhy helps founders describe what their team needs in English, German, French or Baseldütsch and returns matched labs, investors, partners and experts, each with a reason and a source, plus a 12-month plan.",
-            "I co-founded this project at Hack am Rhein 2026, where our five-person team won, and have continued working on FadäRhy since.",
-          ],
-        },
       ],
     },
     {
-      id: "problem",
+      id: "process",
       label: "Process",
-      title: "Making the ecosystem discovery **understandable, trustworthy and actionable**.",
+      title: "From fragmented screens to **a shared design system**",
       blocks: [
         {
           type: "text",
           paragraphs: [
-            "Rather than presenting founders with complex filters and unexplained recommendations, we structured the experience around three steps: Describe, Check and Act.",
+            "At the beginning of the project, FadäRhy looked like several products stitched together, because each of us had built screens our own way. For a founder moving from Describe to Check to Act, every inconsistency was a small reason to doubt the result. Having led the interface at every stage, I rebuilt the variations as one design system of shared tokens, components, and written rules, as a single source of truth.",
+            "Figma and code are generated from the same tokens, so design and development can't drift apart. Since the AI coding assistants read the same names and rules, a screen they draft uses the components a teammate would.",
           ],
         },
         {
           type: "figure",
           src: "/images/fadarhy/fadarhy-process.png",
           alt: "FadäRhy Describe, Check profile and Matches and plan workflow, showing a founder’s needs, editable team profile, sourced lab-space match and an introduction draft requiring approval.",
+        },
+        {
+          type: "text",
+          paragraphs: [
+            {
+              text: "Where the system came from. Designing the journey and the directory side by side, I kept reaching for the same few parts: chips, a segmented control, pill tabs, row buttons. The language picker and the list/grid toggle were the same control. The filter chips worked in both places. That repetition is what I turned into the design system in the next section.",
+              strong: "Where the system came from.",
+            },
+          ],
         },
       ],
     },
@@ -288,7 +345,8 @@ export const fadarhy: CaseStudy = {
         {
           type: "text",
           paragraphs: [
-            "I translated design decisions into shared rules for AI-assisted development and interface review.",
+            "At the beginning of the project, each of us had built screens our own way: different colors, button styles, and chip behaviors from page to page. I consolidated these into one design system and made it the single source of truth for the team.",
+            "I designed it to be AI-ready: an assistant writing a new screen should reach for the same tokens and components a teammate would, without being told each time.",
           ],
         },
         { type: "visual", name: "fadarhy-rules" },
@@ -316,8 +374,10 @@ export const fadarhy: CaseStudy = {
           type: "text",
           paragraphs: [
             "A consistent interface doesn't guarantee reliable recommendations. For FadäRhy, trust depends on whether founders receive relevant, explainable and actionable guidance.",
-            { text: "Three questions behind trust.", strong: "Three questions behind trust." },
-            "I defined an evaluation plan around three questions:",
+            {
+              text: "Three questions behind trust. I defined an evaluation plan around three questions:",
+              strong: "Three questions behind trust.",
+            },
           ],
         },
         {
@@ -326,33 +386,38 @@ export const fadarhy: CaseStudy = {
           items: [
             {
               text: "Understand. Does the app correctly capture the founder's needs?",
-              strong: "Understand",
+              strong: "Understand.",
             },
             {
               text: "Explain. Are recommendations relevant and supported by sources?",
-              strong: "Explain",
+              strong: "Explain.",
             },
-            { text: "Act. Are the suggested next steps realistic and useful?", strong: "Act" },
+            { text: "Act. Are the suggested next steps realistic and useful?", strong: "Act." },
           ],
         },
         { type: "visual", name: "fadarhy-scenarios" },
       ],
     },
     {
-      id: "outcome",
-      label: "Outcome",
+      id: "learnings",
+      label: "Learnings",
       title: "A team win, and lessons about pace",
       blocks: [
         {
           type: "text",
           paragraphs: [
-            "The design system keeps FadäRhy consistent in how it looks and behaves everywhere. The founder journey gives that consistency a purpose. Evals connect the two. They check whether a component follows the rules, and also whether the founder using it understands the match and knows what to do next.",
-          ],
-        },
-        {
-          type: "text",
-          paragraphs: [
-            "AI assistance sped up the build too, but only when I knew exactly what I wanted, because vague prompts produced vague interfaces. And showing sources and letting founders edit their profile turned out to be more than features. They were design decisions about trust, and they’re how founders came to trust the matches.",
+            {
+              strong: "A design system matters more than a clever AI prompt.",
+              text: "A design system matters more than a clever AI prompt. Building FadäRhy with different teammates and AI coding assistants taught me that consistency cannot depend on individual prompts. Shared tokens, reusable components, and clear rules gave us a common foundation for building interfaces.",
+            },
+            {
+              strong: "Design and code work better together.",
+              text: "Design and code work better together. Contributing to both interface design and frontend implementation changed how I worked. Instead of treating designs as finished screens, I could explore interactions in the browser, identify problems, and refine the experience through working prototypes.",
+            },
+            {
+              strong: "A trustworthy interface is not necessarily trustworthy advice.",
+              text: "A trustworthy interface is not necessarily trustworthy advice. FadäRhy helps founders discover relevant organizations, opportunities, and next steps. I learned that presenting a recommendation beautifully is not enough; users also need to understand why it was suggested, examine the supporting evidence, and correct their information. Making recommendations explainable became a central design principle, although its impact on user trust still needs testing.",
+            },
           ],
         },
       ],
@@ -366,6 +431,11 @@ export const attest: CaseStudy = {
   subtitle: "Security UX / Adaptive onboarding",
   title: "Verification without unnecessary friction.",
   lede: "An interaction design exploration of how onboarding can remain simple for legitimate users while asking for stronger identity checks when they are genuinely required.",
+  showcase: {
+    src: "/videos/donot-fraud/verify-cover-wide.mp4",
+    poster: "/videos/donot-fraud/verify-cover-wide-poster.jpg",
+    label: "Donot Fraud AI adaptive verification: choosing a passkey, digital ID or another method",
+  },
   facts: [
     {
       label: "Onboarding Workflows",
@@ -402,6 +472,7 @@ export const attest: CaseStudy = {
       values: ["2026"],
     },
   ],
+  tools: aiTools,
   sections: [
     {
       id: "context",
@@ -414,7 +485,8 @@ export const attest: CaseStudy = {
             "At Swiss AI Weeks 2026, the Swisscom challenge explored identity verification in response to emerging AI-enabled fraud.",
             {
               text: "I developed Donot Fraud AI, where I focused on a specific design problem: reducing onboarding friction while preserving essential security requirements. My contribution centred on frontend development and UX design, working alongside a team of developers.",
-              strong: "reducing onboarding friction while preserving essential security requirements.",
+              strong:
+                "reducing onboarding friction while preserving essential security requirements.",
             },
           ],
         },
@@ -422,7 +494,10 @@ export const attest: CaseStudy = {
           type: "text",
           title: "The problem",
           paragraphs: [
-            { text: "Too many steps. Too much uncertainty.", strong: "Too many steps. Too much uncertainty." },
+            {
+              text: "Too many steps. Too much uncertainty.",
+              strong: "Too many steps. Too much uncertainty.",
+            },
             "Identity verification can require repeated actions, switching between applications and navigating unfamiliar security checks. These interactions can create unnecessary effort for legitimate users. The challenge was to simplify the experience without removing the checks needed to establish trust.",
           ],
         },
@@ -447,7 +522,6 @@ export const attest: CaseStudy = {
           src: "/images/donot-fraud/verification-comparison.png",
           alt: "Comparison of phone-first and adaptive verification. Phone-first avoids app setup but adds waiting, network dependence and accessibility barriers. Adaptive verification offers suitable methods and requests additional evidence only when required, with clear next steps.",
         },
-
       ],
     },
     {
@@ -463,9 +537,9 @@ export const attest: CaseStudy = {
         },
         {
           type: "video",
-          src: "/videos/donot-fraud/onboarding-walkthrough.mp4",
-          poster: "/videos/donot-fraud/onboarding-walkthrough-poster.jpg",
-          label: "Donot Fraud AI onboarding walkthrough",
+          src: "/videos/donot-fraud/verify-flow-steps.mp4",
+          poster: "/videos/donot-fraud/verify-flow-steps-poster.jpg",
+          label: "Donot Fraud AI verification flow, step by step: choose how to verify, enter three details, see what each method takes, and finish verified",
         },
       ],
     },
@@ -505,7 +579,9 @@ export const attest: CaseStudy = {
       blocks: [
         {
           type: "text",
-          paragraphs: ["To evaluate the proposed experience, I would compare a fixed onboarding journey with the adaptive design using identical tasks and identity assurance requirements. The goal is to determine whether the interface reduces unnecessary effort while maintaining essential security checks."],
+          paragraphs: [
+            "To evaluate the proposed experience, I would compare a fixed onboarding journey with the adaptive design using identical tasks and identity assurance requirements. The goal is to determine whether the interface reduces unnecessary effort while maintaining essential security checks.",
+          ],
         },
         { type: "visual", name: "attest-evaluation-plan" },
       ],
@@ -520,11 +596,13 @@ export const attest: CaseStudy = {
           paragraphs: [
             {
               text: "The key insight from this exploration was that reducing friction isn't simply about removing steps. It's about understanding which checks are necessary, when they are required and how clearly they are communicated.",
-              strong: "which checks are necessary, when they are required and how clearly they are communicated.",
+              strong:
+                "which checks are necessary, when they are required and how clearly they are communicated.",
             },
             {
               text: "Make verification effortless where possible, stronger where necessary and understandable at every step.",
-              strong: "Make verification effortless where possible, stronger where necessary and understandable at every step.",
+              strong:
+                "Make verification effortless where possible, stronger where necessary and understandable at every step.",
             },
           ],
         },
@@ -535,7 +613,8 @@ export const attest: CaseStudy = {
             "The next step is to test the proposed experience with users and validate its security requirements with identity specialists.",
             {
               text: "The goal remains simple: reduce unnecessary onboarding effort without compromising trust or security.",
-              strong: "reduce unnecessary onboarding effort without compromising trust or security.",
+              strong:
+                "reduce unnecessary onboarding effort without compromising trust or security.",
             },
           ],
         },

@@ -11,6 +11,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import caseStudyCss from "../components/case-study/case-study-layout.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -94,6 +95,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "stylesheet", href: caseStudyCss },
+      { rel: "stylesheet", href: "/typography.css" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=League+Spartan:wght@700..900&family=Manrope:wght@200..800&display=swap",
       },
       { rel: "icon", href: "/favicon.png?v=2", type: "image/png" },
     ],

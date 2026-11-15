@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="912" viewBox="0 0 1200 912">
+  <rect width="1200" height="912" fill="#0b0b0b"/>
+  <g fill="none" stroke="#3a3a3a" stroke-width="2">
+    <rect x="640" y="150" width="420" height="270" rx="22"/>
+    <path d="M640 210v-38a22 22 0 0 1 22-22h38M1000 150h38a22 22 0 0 1 22 22v38M1060 360v38a22 22 0 0 1-22 22h-38M700 420h-38a22 22 0 0 1-22-22v-38" stroke="#ae87f4" stroke-width="5"/>
+    <circle cx="850" cy="640" r="130"/>
+    <circle cx="850" cy="640" r="130" stroke="#ae87f4" stroke-width="5" stroke-dasharray="560 260" transform="rotate(-90 850 640)"/>
+    <path d="M1080 560a60 60 0 0 1 0 80M1105 535a95 95 0 0 1 0 130M1130 510a130 130 0 0 1 0 180"/>
+  </g>
+  <g fill="#ae87f4"><circle cx="120" cy="740" r="7"/><circle cx="160" cy="740" r="7" opacity=".45"/><circle cx="200" cy="740" r="7" opacity=".45"/><circle cx="240" cy="740" r="7" opacity=".45"/></g>
+  <text x="112" y="250" fill="#ae87f4" font-family="Helvetica, Arial, sans-serif" font-size="22" letter-spacing="4">FINTECH · END-TO-END UX</text>
+  <text x="104" y="420" fill="#f5f5f5" font-family="Helvetica, Arial, sans-serif" font-size="148" font-weight="700">Jia</text>
+  <text x="112" y="806" fill="#8a8a8a" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="2">TYPOGRAPHIC COVER · NOT A PRODUCT SCREENSHOT</text>
+</svg>

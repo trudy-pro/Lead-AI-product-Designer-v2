@@ -43,9 +43,9 @@ function AttestCaseStudyPage() {
   const active = useActiveSection(ids);
   return (
     <ContextualPreviewProvider>
-      <div className="jia-full-page min-h-screen bg-background px-6 pb-16 pt-0 text-foreground sm:px-10 lg:pt-12">
+      <div className="case-study-design case-page">
         <MobileCaseNav sections={sections} active={active} />
-        <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[27%_1fr] lg:gap-16">
+        <div className="cs-layout">
           <CaseStudySidebar
             sections={sections}
             active={active}
@@ -53,7 +53,7 @@ function AttestCaseStudyPage() {
             title={attest.name}
             subtitle={attest.subtitle}
           />
-          <main>
+          <main className="cs-content">
             <CaseStudyContent study={attest} />
           </main>
         </div>

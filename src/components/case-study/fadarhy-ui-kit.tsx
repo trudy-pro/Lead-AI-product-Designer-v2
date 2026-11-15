@@ -11,8 +11,8 @@ export function FadarhyUiKit() {
           className="fadarhy-ui-kit"
           style={
             {
-              "--font-sans": '"Neue Frutiger", "Helvetica Neue", Helvetica, Arial, sans-serif',
-              "--font-mono": '"JetBrains Mono", ui-monospace, Menlo, monospace',
+              "--font-sans": "var(--font-site)",
+              "--font-mono": "var(--font-site)",
               "--thread-lime": "#d6ff3f",
               "--night": "#2a2a2a",
               "--mist": "#eef0e8",

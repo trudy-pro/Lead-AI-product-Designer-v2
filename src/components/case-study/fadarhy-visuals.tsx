@@ -15,7 +15,7 @@ const palette: Record<Mode, Record<string, string>> = {
     aqua: "#F4F6FB",
     primary: "#2446F5",
     "primary-fg": "#FFFFFF",
-    bg: "#F2F2F2",
+    bg: "#F4F6FB",
     card: "#FFFFFF",
     secondary: "#F4F6FB",
     border: "#E4E4EA",
@@ -221,7 +221,7 @@ export function FadarhyTokens() {
         <div className="mt-5 grid items-center gap-4 sm:grid-cols-[1fr_24px_1fr]">
           <div className="rounded-xl border border-[var(--fr-border)] p-4">
             <p className="font-mono text-[12px]">Primitive</p>
-            <p className="mt-1 text-[14px] text-[var(--fr-muted)]">
+            <p className="cs-reading mt-1 text-[19px] text-[var(--fr-muted)]">
               Raw values only, e.g.{" "}
               <code className="font-mono text-[12px]">--primitive-color-2446f5</code>. Never used in
               components.
@@ -235,7 +235,7 @@ export function FadarhyTokens() {
           </span>
           <div className="rounded-xl border border-[var(--fr-border)] p-4">
             <p className="font-mono text-[12px]">Semantic → component</p>
-            <p className="mt-1 text-[14px] text-[var(--fr-muted)]">
+            <p className="cs-reading mt-1 text-[19px] text-[var(--fr-muted)]">
               <code className="font-mono text-[12px]">--primary</code> resolves to Rhine Blue in
               light mode and Thread Lime in dark.
             </p>
@@ -360,7 +360,7 @@ export function FadarhyComponents() {
         <div className={panel}>
           <p className={label}>Actions</p>
           <p className="mt-3 text-[17px] font-semibold">Ranked by priority, not decoration</p>
-          <p className="mt-1 text-[14px] text-[var(--fr-muted)]">
+          <p className="cs-reading mt-1 text-[19px] text-[var(--fr-muted)]">
             One primary action per view; everything else steps down.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
@@ -638,8 +638,8 @@ export function FadarhyScenarios() {
         ]}
       />
       <div className="mt-8 lg:max-w-[50%]">
-        <h3 className="text-[20px] font-semibold leading-tight">Score. Review. Improve.</h3>
-        <p className="mt-3 text-[13px] leading-[1.6] text-muted-foreground">
+        <h3 className="text-[19px] font-semibold leading-tight">Score. Review. Improve.</h3>
+        <p className="cs-reading mt-3 text-[19px] leading-[1.6] text-muted-foreground">
           For each scenario, compare the output with the input, verify sources, check relevance and
           assess next steps.
         </p>
@@ -647,22 +647,21 @@ export function FadarhyScenarios() {
           {["Pass", "Partial", "Fail"].map((rating) => (
             <li
               key={rating}
-              className="rounded-sm border border-border px-3 py-1.5 text-[11px] font-semibold"
+              className="rounded-sm border border-border px-3 py-1.5 text-[16px] font-semibold"
             >
               {rating}
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-[13px] leading-[1.6] text-muted-foreground">
+        <p className="cs-reading mt-4 text-[19px] leading-[1.6] text-muted-foreground">
           <strong className="font-semibold text-foreground">Critical failure:</strong> Invented
           eligibility, availability or deadlines.
         </p>
-        <div className="mt-6 text-[13px] leading-[1.6]">
-          <p className="font-semibold">Next iteration</p>
-          <h3 className="mt-3 text-[20px] font-semibold leading-tight">
-            From findings to a repeatable test
+        <div className="mt-6 text-[19px] leading-[1.6]">
+          <h3 className="text-[19px] font-semibold leading-tight">
+            Next iteration: From findings to a repeatable test
           </h3>
-          <p className="mt-2 text-muted-foreground">
+          <p className="cs-reading mt-2 text-muted-foreground">
             These evals are planned, not yet executed. The next step is to test the live beta,
             identify failures and refine the experience based on the results.
           </p>
@@ -1001,7 +1000,7 @@ export function FadarhyWalkthrough() {
             <p className="mt-5 text-[13px] text-muted-foreground">
               <span className="tabular-nums">{w.step}</span> — {w.title}
             </p>
-            <p className="mt-2 text-[15px] leading-[1.6]">{w.text}</p>
+            <p className="cs-reading mt-2 text-[19px] leading-[1.6]">{w.text}</p>
           </li>
         ))}
       </ol>
@@ -1148,11 +1147,11 @@ export function FadarhyLoop() {
 
 export function FadarhyRules() {
   return (
-    <Reveal className="rounded-2xl border border-border bg-[#f4f6fb] p-4 dark:bg-muted sm:p-6">
-      <div className="mb-6 flex flex-wrap items-center gap-6 rounded-2xl bg-muted p-6 sm:p-8">
+    <Reveal className="fr-theme rounded-2xl border border-[var(--fr-border)] bg-background p-4 sm:p-6">
+      <div className="mb-6 flex flex-wrap items-center gap-6 rounded-xl border border-[var(--fr-border)] bg-muted p-6 sm:p-8">
         <div className="flex items-center gap-5">
           <span className="text-[64px] font-semibold leading-none tracking-[-0.06em]">111</span>
-          <p className="border-l border-border pl-5 text-[14px] leading-[1.5] text-muted-foreground">
+          <p className="border-l border-[var(--fr-border)] pl-5 text-[14px] leading-[1.5] text-muted-foreground">
             Hard-coded
             <br />
             hex values
@@ -1210,7 +1209,7 @@ export function FadarhyRules() {
         ].map(({ label, title, text, note, Icon }, index) => (
           <li
             key={title}
-            className="flex flex-col rounded-2xl border border-border bg-card p-5 sm:p-6"
+            className="flex flex-col rounded-xl border border-[var(--fr-border)] bg-card p-5 sm:p-6"
           >
             <p className="mb-4 text-[13px] uppercase text-muted-foreground">
               <span className="tabular-nums">0{index + 1}</span> — {label}
@@ -1221,16 +1220,18 @@ export function FadarhyRules() {
               </span>
               <div>
                 <h3 className="text-[23px] font-semibold leading-tight">{title}</h3>
-                <p className="mt-3 text-[16px] leading-[1.6] text-muted-foreground">{text}</p>
+                <p className="body-copy mt-3 text-[19px] leading-[1.6] text-muted-foreground">
+                  {text}
+                </p>
               </div>
             </div>
-            <p className="mt-auto rounded-xl border border-border bg-muted px-4 py-3 text-[14px]">
+            <p className="mt-auto rounded-xl border border-[var(--fr-border)] bg-muted px-4 py-3 text-[14px]">
               {note}
             </p>
           </li>
         ))}
       </ol>
-      <div className="mt-8 border-t border-border pt-6">
+      <div className="mt-8 border-t border-[var(--fr-border)] pt-6">
         <h3 className="mb-4 text-[20px] font-medium">What the interface must satisfy</h3>
         <ul className="flex flex-wrap gap-3">
           {[
@@ -1240,7 +1241,10 @@ export function FadarhyRules() {
             "Explainable matches",
             "Accessibility",
           ].map((item) => (
-            <li key={item} className="rounded-xl border border-border px-4 py-3 text-[14px]">
+            <li
+              key={item}
+              className="rounded-xl border border-[var(--fr-border)] px-4 py-3 text-[14px]"
+            >
               {item}
             </li>
           ))}

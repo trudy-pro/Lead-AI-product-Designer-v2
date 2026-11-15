@@ -1,0 +1,72 @@
+/* Shared type family for the portfolio and its standalone pages. */
+:root {
+  --body-font-size: 19px;
+  --body-line-height: 1.6;
+  --font-site: "Manrope", system-ui, sans-serif;
+  --font-sans: var(--font-site);
+  --font-display: var(--font-site);
+  --font-text: var(--font-site);
+  --font-mono: var(--font-site);
+  --default-font-family: var(--font-site);
+  --default-mono-font-family: var(--font-site);
+}
+html,
+body {
+  font-family: var(--font-site);
+}
+button,
+input,
+select,
+textarea,
+code,
+pre,
+kbd,
+samp {
+  font-family: inherit;
+}
+
+/* Shared reading size, matched to the case-study introduction. */
+body .body-copy,
+body .case-study-design .case-page-lede,
+body .case-study-design .cs-prose,
+body .case-study-design .cs-text,
+body .case-study-design .cs-callout > p:last-child,
+body .case-study-design .cs-step-text,
+body .case-study-design .cs-scope-context,
+body .portfolio-home .case-summary,
+body .portfolio-home .about-body p:not(.eyebrow):not(.work-history-dates),
+body .portfolio-home .about-me p:not(.eyebrow),
+body .portfolio-home .fig-hero-intro,
+body .playground-intro {
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+}
+body .portfolio-home .fig-hero-intro {
+  height: auto;
+  min-height: calc(103.446 * var(--u));
+}
+
+/* Every case study's reading text matches the FadäRhy introduction's size and light weight. */
+body
+  .case-study-design
+  :is(
+    .case-page-lede,
+    .cs-prose,
+    .cs-text,
+    .body-copy,
+    .cs-step-text,
+    .cs-scope-context,
+    .cs-callout > p:last-child,
+    .cs-reading,
+    .cs-scope ul
+  ),
+body .portfolio-home #project-1 .case-summary {
+  font-size: var(--body-font-size);
+  font-weight: 300;
+  line-height: var(--body-line-height);
+}
+
+/* Bold lead-ins stay visibly bold against the light reading weight. */
+body .case-study-design .cs-prose strong {
+  font-weight: 600;
+}

@@ -10,9 +10,9 @@ export type Tone = "neutral" | "info" | "success" | "warning" | "danger";
 export const TONE_CLASS: Record<Tone, string> = {
   neutral: "bg-muted text-muted-foreground border-border",
   info: "bg-muted text-foreground border-border",
-  success: "bg-muted text-foreground border-border",
-  warning: "bg-accent text-accent-foreground border-border",
-  danger: "bg-destructive/10 text-destructive border-destructive/30",
+  success: "bg-muted text-foreground border-transparent",
+  warning: "bg-[#F4EEFF] text-[#6B3FD6] border-transparent",
+  danger: "bg-[#FDEEEE] text-[#C2272D] border-transparent",
 };
 
 export const STATUSES: Record<

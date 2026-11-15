@@ -418,7 +418,7 @@ function Index() {
                       </div>
                       <div className="case-preview">
                         <img
-                          src="/portfolio/jia-preview-5.jpg?v=1"
+                          src="/portfolio/jia-preview-6.jpg?v=1"
                           alt=""
                           loading="lazy"
                           width="240"

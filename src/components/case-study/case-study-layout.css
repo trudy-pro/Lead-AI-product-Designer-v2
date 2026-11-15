@@ -1019,21 +1019,14 @@
   border: 0;
   border-radius: 6px;
 }
-/* Soft lift on screenshots (images only; videos and the cover stay flat). */
-.case-study-design .cs-figure > div:has(> img) {
-  box-shadow:
-    0 1px 2px rgb(16 24 40 / 0.06),
-    0 12px 32px -8px rgb(16 24 40 / 0.18);
-}
-.case-study-design .cs-cover .cs-figure > div,
-.case-study-design .jia-rewards-preview .cs-figure > div {
-  box-shadow: none;
-}
 /* Screenshots with their own rounded app-window corners: clip the frame to
    those corners so no background colour shows outside them. */
 .case-study-design .cs-image-app-window .cs-figure > div {
   border-radius: 1.6% / 2.2%;
   background: transparent;
+  box-shadow:
+    0 1px 2px rgb(16 24 40 / 0.06),
+    0 12px 32px -8px rgb(16 24 40 / 0.18);
 }
 .case-study-design .cs-image-app-window .cs-figure img {
   border-radius: 0;
@@ -1203,8 +1196,16 @@
 .case-study-design .cs-contribution {
   scroll-margin-top: 64px;
 }
+/* Same centred 1120px column as the hero and sections, so the row lines up
+   on wide screens even when it sits outside the contribution block. */
 .case-study-design .cs-tools {
-  margin-top: 48px;
+  max-width: 1120px;
+  margin: 48px auto 0;
+}
+/* The overlay pads every section by 80px; the tools row belongs to the
+   header, so keep the same 48px gap it has on the full page. */
+.case-study-design .project-overlay-scroll .cs-tools {
+  padding-top: 0;
 }
 .case-study-design .cs-tools > .cs-section-label {
   margin-bottom: 24px;

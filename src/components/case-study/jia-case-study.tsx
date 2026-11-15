@@ -13,6 +13,7 @@ import {
 
 export const jiaSections: CaseSection[] = [
   { id: "cs-intro", label: "Intro" },
+  { id: "cs-contribution", label: "Contribution" },
   { id: "background", label: "Company background" },
   { id: "introduction", label: "Jia rewards borrowers" },
   { id: "onboarding", label: "Business onboarding" },
@@ -41,35 +42,45 @@ export function JiaCaseStudyContent({
           showLabel={false}
           category="Loan App — UI/UX case study"
           subtitle="Designing a mobile and web financial experience"
-          lede="Jia set out to reward good borrowing: small-business owners who repay on time earn Jia tokens that unlock lower fees and higher limits. I participated in the complete UX process and was responsible for the initial mobile application designs."
+          lede="Jia set out to reward good borrowing: small-business owners who repay on time earn Jia tokens that unlock lower fees and higher limits."
         >
-          <Reveal>
-            <dl className="project-details cs-facts cs-facts-row">
-              <ProjectDetail label="Role" values={["UX designer"]} />
-              <ProjectDetail label="Year" values={["2023"]} />
-              <ProjectDetail
-                label="Project type"
-                values={[
-                  "Mobile loan app",
-                  "UX case study",
-                  "Fintech",
-                  "UX Research",
-                  "Product Design",
-                ]}
-                className="col-span-2 sm:col-span-1"
-              />
-              <ProjectDetail
-                label="Scope"
-                values={["80+ screens", "1.5 years"]}
-                className="col-span-2"
-              />
-              <ProjectDetail
-                label="Process"
-                values={["End-to-end UX process — from research to usability testing"]}
-                className="col-span-2 sm:col-span-1"
-              />
-            </dl>
-          </Reveal>
+          {null}
+        </CaseStudyHeader>
+        <Reveal id="cs-contribution" className="cs-contribution">
+          <h2 id="cs-contribution-heading" className="cs-section-label" aria-label="Contribution">
+            [ CONTRIBUTION ]
+          </h2>
+          <Prose>
+            <p>
+              I participated in the complete UX process and was responsible for the initial mobile
+              application designs.
+            </p>
+          </Prose>
+          <dl className="project-details cs-facts cs-facts-row">
+            <ProjectDetail label="Role" values={["UX designer"]} />
+            <ProjectDetail label="Year" values={["2023"]} />
+            <ProjectDetail
+              label="Project type"
+              values={[
+                "Mobile loan app",
+                "UX case study",
+                "Fintech",
+                "UX Research",
+                "Product Design",
+              ]}
+              className="col-span-2 sm:col-span-1"
+            />
+            <ProjectDetail
+              label="Scope"
+              values={["80+ screens", "1.5 years"]}
+              className="col-span-2"
+            />
+            <ProjectDetail
+              label="Process"
+              values={["End-to-end UX process — from research to usability testing"]}
+              className="col-span-2 sm:col-span-1"
+            />
+          </dl>
           <ToolsSection
             tools={[
               { name: "Figma", icon: "/portfolio/tools/figma.webp" },
@@ -77,7 +88,7 @@ export function JiaCaseStudyContent({
               { name: "Notion", icon: "/portfolio/tools/notion.webp" },
             ]}
           />
-        </CaseStudyHeader>
+        </Reveal>
       </header>
 
       <EditorialContentSection
@@ -133,8 +144,8 @@ export function JiaCaseStudyContent({
           <p>
             I designed Jia, a loan app that treats good borrowers like owners. Repaying on time,
             referring friends and acting as a guarantor earn Jia tokens. The tokens unlock what
-            business owners told me they needed to grow: lower interest, higher loan limits, a seven-day
-            grace period and access to cheaper suppliers.
+            business owners told me they needed to grow: lower interest, higher loan limits, a
+            seven-day grace period and access to cheaper suppliers.
           </p>
         </Prose>
       </EditorialContentSection>
